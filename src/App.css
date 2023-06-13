@@ -85,11 +85,24 @@ footer {
 
 .form-container {
   width: 60%;
+  /* text-align: center; */
 }
 .form-container .names {
-  width: 30%;
+  width: 37%;
 }
 .form-container input {
   width: 80%;
   margin: 2%;
+  border-radius: 6px;
+  border: 1px solid gray;
+  padding: 5px;
+}
+.form-container button {
+  margin: 2%;
+  width: 30%;
+  background-color: black;
+  color: whitesmoke;
+  border: none;
+  padding: 5px;
+  border-radius: 6px;
 }
