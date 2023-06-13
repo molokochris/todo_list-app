@@ -80,3 +80,16 @@
 footer {
   padding: 2px;
 }
+
+/* registration form */
+
+.form-container {
+  width: 60%;
+}
+.form-container .names {
+  width: 30%;
+}
+.form-container input {
+  width: 80%;
+  margin: 2%;
+}
