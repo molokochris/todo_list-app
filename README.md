@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -50,3 +51,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
 ### Anhis section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-mini
+=======
+Todo List App using React
+>>>>>>> 758d9617a8274fb3f603a7b37aaa7a05fe884d04
