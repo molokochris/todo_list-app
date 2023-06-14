@@ -9,20 +9,20 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch("http://localhost:8000/user");
-          const data = await response.json();
-          console.log(data);
-          setUsers(data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/user");
+        const data = await response.json();
+        console.log(data);
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-      fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
   const isValid = (users) => {
     let isProceed = false;
@@ -36,8 +36,13 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    isValid(users) ? navigate("/") : 
-    console.log(email)
+    if (isValid(users)) {
+      localStorage.setItem("isLoggedIn", "true");
+      navigate("/");
+    } else {
+      toast.error("failed to log in, check your details and try again");
+    }
+    console.log(email);
     // fetch("http://localhost:8000/user/"+email).then((res) => {
     //     return res.json();
     // }).then((resp) => {
