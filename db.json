@@ -1,9 +1,32 @@
 {
   "user": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "h",
+      "surname": "ghb",
+      "email": "rth@fgh.dfg",
+      "pass": "trh",
+      "id": 1
+    },
+    {
+      "name": "admin",
+      "surname": "senior",
+      "email": "molko@molko.vom",
+      "pass": "kolmo",
+      "id": 2
+    },
+    {
+      "name": "gf",
+      "surname": "thf",
+      "email": "molo@molo.molo",
+      "pass": "molo",
+      "id": 3
+    },
+    {
+      "name": "gf",
+      "surname": "b",
+      "email": "f@f.k",
+      "pass": "tyht",
+      "id": 4
     }
   ]
 }

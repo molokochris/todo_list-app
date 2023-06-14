@@ -8,11 +8,11 @@ import {
 export default function Home() {
   return (
     <div className="container">
-      <nav className="head">
+      {/* <nav className="head">
         <Link to="/">
           <img src="./logo.png" alt="" />
         </Link>
-      </nav>
+      </nav> */}
       <div className="inner">
         <div className="container-tab">
           <div className="account-tab">
@@ -23,7 +23,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <footer>&copy;</footer>
     </div>
   );
 }
