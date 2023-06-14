@@ -9,20 +9,20 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch("http://localhost:8000/user");
-  //         const data = await response.json();
-  //         console.log(data);
-  //         setUsers(data);
-  //       } catch (error) {
-  //         console.error("Error fetching data:", error);
-  //       }
-  //     };
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("http://localhost:8000/user");
+          const data = await response.json();
+          console.log(data);
+          setUsers(data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
 
-  //     fetchData();
-  //   }, []);
+      fetchData();
+    }, []);
 
   const isValid = (users) => {
     let isProceed = false;
@@ -36,23 +36,22 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // isValid(users) ? navigate("/") : null;
-
-    fetch("http://localhost:8000/user/"+email).then((res) => {
-        return res.json();
-    }).then((resp) => {
-        console.log(resp);
-        if(Object.keys(resp).length===0) {
-        toast.error('Email address not found');
-        }else{
-        if (resp.pass === pass){
-            navigate('/')
-        }else{
-            toast.error('Password wrong')
-        }
-    }}).catch((err) => {
-        toast.error('Login Failed :'+err.message);
-    })
+    isValid(users) ? navigate("/") : 
+    console.log(email)
+    // fetch("http://localhost:8000/user/"+email).then((res) => {
+    //     return res.json();
+    // }).then((resp) => {
+    //     if(Object.keys(resp).length===0) {
+    //     toast.error('Email address not found');
+    //     }else{
+    //     if (resp.pass === pass){
+    //         navigate('/')
+    //     }else{
+    //         toast.error('Password wrong')
+    //     }
+    // }}).catch((err) => {
+    //     toast.error('Login Failed :'+err.message);
+    // })
   };
   return (
     <div className="container">
