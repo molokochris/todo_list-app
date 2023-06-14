@@ -1,32 +1,18 @@
 {
   "user": [
     {
-      "name": "h",
-      "surname": "ghb",
-      "email": "rth@fgh.dfg",
-      "pass": "trh",
+      "name": "Moloko Chris",
+      "surname": "Poopedi",
+      "email": "molokochrisp742@gmail.com",
+      "pass": "123",
       "id": 1
     },
     {
-      "name": "admin",
-      "surname": "senior",
-      "email": "molko@molko.vom",
-      "pass": "kolmo",
+      "name": "mo",
+      "surname": "mo",
+      "email": "mo@mo.mo",
+      "pass": "123",
       "id": 2
-    },
-    {
-      "name": "gf",
-      "surname": "thf",
-      "email": "molo@molo.molo",
-      "pass": "molo",
-      "id": 3
-    },
-    {
-      "name": "gf",
-      "surname": "b",
-      "email": "f@f.k",
-      "pass": "tyht",
-      "id": 4
     }
   ]
 }

@@ -54,14 +54,14 @@ export default function Registration() {
       fetch("http://localhost:8000/user", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(regObj),
+        body: JSON.stringify(regObj)
       })
         .then((res) => {
           toast.success("Registration Successful");
           navigate("/login");
         })
         .catch((err) => {
-          toast.success("Registration Failed:" + err.message);
+          toast.error("Registration Failed:" + err.message);
         });
     } else {
     }
