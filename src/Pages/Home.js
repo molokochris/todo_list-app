@@ -7,7 +7,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="container">
+    <div className="container-main">
       {/* <nav className="head">
         <Link to="/">
           <img src="./logo.png" alt="" />
@@ -16,7 +16,9 @@ export default function Home() {
       <div className="inner">
         <div className="container-tab">
           <div className="account-tab">
-            <Link className="login-tab" to="/login">Login</Link>
+            <Link className="login-tab" to="/login">
+              Login
+            </Link>
             <Link className="register-tab" to="/register">
               Register
             </Link>

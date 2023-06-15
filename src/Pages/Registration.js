@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { toast } from "react-toastify";
 
 export default function Registration() {
@@ -68,7 +69,7 @@ export default function Registration() {
   };
 
   return (
-    <div className="container">
+    <div className="container container-main">
       <form className="form-container" onSubmit={handleSubmit}>
         <input
           value={name}

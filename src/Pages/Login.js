@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -38,7 +39,7 @@ export default function Login() {
     e.preventDefault();
     if (isValid(users)) {
       localStorage.setItem("isLoggedIn", "true");
-      navigate("/");
+      navigate("/Dashboard");
     } else {
       toast.error("failed to log in, check your details and try again");
     }
@@ -59,9 +60,9 @@ export default function Login() {
     // })
   };
   return (
-    <div className="container">
+    <div className="container container-main">
       <form className="form-container" onSubmit={handleSubmit}>
-        <div class="mb-3">
+        <div class="mb-3 container">
           <input
             value={email}
             type="text"
@@ -70,7 +71,7 @@ export default function Login() {
             onChange={(e) => emailChange(e.target.value)}
           />
         </div>
-        <div class="mb-3">
+        <div class="mb-3 container">
           <input
             value={pass}
             type="password"
@@ -79,7 +80,7 @@ export default function Login() {
             onChange={(e) => passChange(e.target.value)}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 container">
           <button type="submit" class="btn btn-dark">
             login
           </button>

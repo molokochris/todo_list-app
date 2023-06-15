@@ -1,7 +1,7 @@
 /* body {
   background-color: rgb(43,52,75);
 } */
-.container {
+.container-main {
   background-color: whitesmoke;
   height: 100vh;
   justify-content: center;
@@ -10,7 +10,7 @@
   width: 100%;
   align-items: center;
 }
-.container .head {
+.container-main .head {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,10 +18,10 @@
   height: 5%;
   width: 98%;
 }
-.container .head img {
+.container-main .head img {
   width: 40px;
 }
-.container .inner {
+.container-main .inner {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@
   /* background-color: rgb(43,52,75); */
   border-radius: 30px;
 }
-.container .container-tab {
+.container-main .container-tab {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,4 +111,53 @@ footer {
 } */
 .form-container button {
   margin: 0 6px;
+}
+
+/* Dashboard */
+
+.dashboard-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.search-container {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+  height: auto;
+}
+.dashboard {
+  width: 98%;
+  margin: 1%;
+}
+
+.card-min {
+  max-width: 18rem;
+}
+.form-control:focus {
+  box-shadow: none; /* Remove the default box shadow */
+  border-color: #ced4da; /* Change the border color */
+}
+.add {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+  transform: translate(-50%, 50%);
+  background-color: rgb(43, 52, 75);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-icon {
+  color: whitesmoke;
+  font-size: 24px;
+}
+.add a {
+  text-decoration: none;
 }
