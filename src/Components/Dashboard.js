@@ -1,31 +1,78 @@
+import { useState } from "react";
+
 export default function Dashboard() {
+  const [doneCards, setDoneCards] = useState([]);
+
+  const [cards, setCards] = useState([
+    {
+      id: 1,
+      title: "Title 1",
+      body: "Body 1",
+      color: "bg-primary",
+      isChecked: false,
+    },
+  ]);
+
+  const handleAddCard = () => {
+    const newCard = {
+      id: cards.length + 1,
+      title: "New Title",
+      body: "New Body",
+      color: "bg-primary",
+      isChecked: false,
+    };
+    setCards([...cards, newCard]);
+  };
+
+  const handleClick = (id) => {
+    setCards(
+      cards.map((card) => {
+        if (card.id === id) {
+          let newColor = "bg-danger";
+          if (card.color === "bg-danger") {
+            newColor = "bg-primary";
+          } else if (card.color === "bg-primary") {
+            newColor = "bg-success";
+          } else if (card.color === "bg-success") {
+            newColor = "bg-danger";
+          }
+          return {
+            ...card,
+            color: newColor,
+          };
+        }
+        return card;
+      })
+    );
+  };
+
+  const handleCheckboxChange = (id) => {
+  setCards((prevCards) => {
+    const updatedCards = prevCards.map((card) => {
+      if (card.id === id) {
+        return {
+          ...card,
+          isChecked: !card.isChecked,
+        };
+      }
+      return card;
+    });
+    const checkedCard = updatedCards.find((card) => card.id === id);
+    if (checkedCard.isChecked) {
+      setDoneCards((prevDoneCards) => [...prevDoneCards, checkedCard]);
+      return updatedCards.filter((card) => card.id !== id);
+    }
+    return updatedCards;
+  });
+};
+
+
   return (
     <div
       className="dashboard-container"
       style={{ backgroundColor: "rgb(245,245,245)" }}
     >
-      <div className="search-container">
-        <nav className="navbar navbar-light bg-light">
-          <form className="form-inline">
-            <div className="input-group">
-              <input
-                className="form-control border-success"
-                type="search"
-                aria-label="Search"
-              />
-              <div className="input-group-append">
-                <button
-                  className="btn btn-outline-success my-2 my-sm-0"
-                  style={{ borderRadius: "0 0.25rem 0.25rem 0" }}
-                  type="submit"
-                >
-                  Search
-                </button>
-              </div>
-            </div>
-          </form>
-        </nav>
-      </div>
+      <div className="search-container">{/* ... */}</div>
 
       <div
         className="dashboard card text-center"
@@ -46,34 +93,36 @@ export default function Dashboard() {
           </ul>
         </div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
-          <div className="col">
-            <div className="card text-bg-primary card-min">
-              <div className="card-body">
-                <h6 className="card-title">title</h6>
-                body
+          {cards.map((card) => (
+            <div
+              className="col"
+              key={card.id}
+              onClick={() => handleClick(card.id)}
+            >
+              <div
+                className={`card ${card.color} card-min d-flex flex-column justify-content-between`}
+              >
+                <div className="card-body">
+                  <div className="form-check">
+                    <label className="form-check-label">{card.title}</label>
+                  </div>
+                  {card.body}
+                </div>
+                <div className="d-flex justify-content-end">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    checked={card.isChecked}
+                    onChange={() => handleCheckboxChange(card.id)}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col">
-            <div className="card text-bg-success card-min">
-              <div className="card-body">
-                <h6 className="card-title">title</h6>
-                body
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card text-bg-danger card-min">
-              <div className="card-body">
-                <h6 className="card-title">title</h6>
-                body
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      <div className="add">
+      <div className="add" onClick={handleAddCard}>
         <a href="#" className="add-link">
           <span className="add-icon">+</span>
         </a>
