@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from "./Card";
 
 export default function Dashboard() {
   const [doneCards, setDoneCards] = useState([]);
@@ -47,25 +48,54 @@ export default function Dashboard() {
   };
 
   const handleCheckboxChange = (id) => {
-  setCards((prevCards) => {
-    const updatedCards = prevCards.map((card) => {
-      if (card.id === id) {
+    setCards((prevCards) => {
+      const updatedCards = prevCards.map((card) => {
+        if (card.id === id) {
+          return {
+            ...card,
+            isChecked: !card.isChecked,
+          };
+        }
+        return card;
+      });
+      const checkedCard = updatedCards.find((card) => card.id === id);
+      if (checkedCard.isChecked) {
+        setDoneCards((prevDoneCards) => [...prevDoneCards, checkedCard]);
+        return updatedCards.filter((card) => card.id !== id);
+      }
+      return updatedCards;
+    });
+  };
+
+  const handleBodyChange = (value, cardId) => {
+    
+    const updateCards = cards.map((card) => {
+        if (card.id === cardId) {
+          return {
+            ...card,
+            body: value,
+          };
+        }
+        return card;
+      });
+  
+      setCards(updateCards);
+  };
+  const handleTitleChange = (value, cardId) => {
+    
+
+    const updateCards = cards.map((card) => {
+      if (card.id === cardId) {
         return {
           ...card,
-          isChecked: !card.isChecked,
+          title: value,
         };
       }
       return card;
     });
-    const checkedCard = updatedCards.find((card) => card.id === id);
-    if (checkedCard.isChecked) {
-      setDoneCards((prevDoneCards) => [...prevDoneCards, checkedCard]);
-      return updatedCards.filter((card) => card.id !== id);
-    }
-    return updatedCards;
-  });
-};
 
+    setCards(updateCards);
+  };
 
   return (
     <div
@@ -94,30 +124,14 @@ export default function Dashboard() {
         </div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {cards.map((card) => (
-            <div
-              className="col"
+            <Card
+              handleBodyChange={handleBodyChange}
+              handleCheckboxChange={handleCheckboxChange}
+              handleClick={handleClick}
+              handleTitleChange={handleTitleChange}
+              card={card}
               key={card.id}
-              onClick={() => handleClick(card.id)}
-            >
-              <div
-                className={`card ${card.color} card-min d-flex flex-column justify-content-between`}
-              >
-                <div className="card-body">
-                  <div className="form-check">
-                    <label className="form-check-label">{card.title}</label>
-                  </div>
-                  {card.body}
-                </div>
-                <div className="d-flex justify-content-end">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    checked={card.isChecked}
-                    onChange={() => handleCheckboxChange(card.id)}
-                  />
-                </div>
-              </div>
-            </div>
+            />
           ))}
         </div>
       </div>
