@@ -123,7 +123,7 @@ footer {
   height: 100%;
   width: 100%;
   text-align: center;
-  /* background-color: blue; */
+  /* background-color: rgb(21,25,61); */
 }
 .search-bar {
   margin: 2px 0%;
@@ -136,44 +136,88 @@ footer {
   text-align: center;
 }
 .list-container {
-  width: 100%;
-  padding: 1px;
-  /* background-color: gray; */
-  height: 95%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 95%;
 }
 .list {
-  width: 98%;
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 1%; */
+  width: 90%;
   height: 98%;
+  border-radius: 10px;
   background-color: rgba(209, 209, 209, 0.822);
-  border-radius: 25px;
 }
-.card-min {
-  max-width: 18rem;
+.list.custom-card {
+  color: whitesmoke;
 }
-.form-control:focus {
-  box-shadow: none; /* Remove the default box shadow */
-  border-color: #ced4da; /* Change the border color */
+.custom-title {
+  width: 100%;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.custom-card-subtitle {
+  width: 100%;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.custom-card-text {
+  width: 100%;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.delete-card {
+  z-index: 1;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  right: 0;
+  top: 0;
+  /* margin: 0 3px 0 0; */
+  /* color: gray; */
+
+}
+.delete-card img:hover {
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  color: whitesmoke;
 }
 .add {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  font-weight: bolder;
+  font-size: larger;
+  bottom: 40px;
+  right: 0px;
   z-index: 1;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 30%);
   background-color: rgb(43, 52, 75);
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.add:hover {
+  cursor: pointer;
+}
+
 .add-icon {
   color: whitesmoke;
   font-size: 24px;
+  height: fit-content;
 }
 .add a {
   text-decoration: none;
