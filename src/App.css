@@ -116,23 +116,40 @@ footer {
 /* Dashboard */
 
 .dashboard-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   position: relative;
   height: 100%;
   width: 100%;
   text-align: center;
+  /* background-color: blue; */
 }
-.search-container {
-  /* width: 100%; */
+.search-bar {
+  margin: 2px 0%;
+}
+.search-bar input {
+  border-radius: 30px;
+  border: 1px solid gray;
+}
+.search-bar input::placeholder {
+  text-align: center;
+}
+.list-container {
+  width: 100%;
+  padding: 1px;
+  /* background-color: gray; */
+  height: 95%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 1%;
-  height: auto;
 }
-.dashboard {
+.list {
   width: 98%;
-  margin: 1%;
+  height: 98%;
+  background-color: rgba(209, 209, 209, 0.822);
+  border-radius: 25px;
 }
-
 .card-min {
   max-width: 18rem;
 }
