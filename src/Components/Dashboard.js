@@ -50,19 +50,19 @@ export default function Dashboard() {
   console.log(searchInput, searchRes, cards)
 
   const handleSearch = (e) => {
-    updateSearch(e.target.value);
-    updateRes(cards.filter((card) => card.title == searchInput))
+    const searchVal = (e.target.value);
+    updateRes(cards.filter((card) => card.title.includes(searchVal)))
     console.log(e.target.value)
   }
 
   return (
     <div className="dashboard-container">
       <div className="search-bar">
-        <input type="text" placeholder="search" value={searchInput} onChange={handleSearch} />
+        <input type="text" placeholder="search" onChange={handleSearch} />
       </div>
       <div className="list-container">
         <div className="list">
-          {searchInput == "" && cards.map((card) => {
+          {searchInput === "" && cards.map((card) => {
             return (
               <div
                 className={`${card.color} card custom-card`}
@@ -103,7 +103,7 @@ export default function Dashboard() {
               </div>
             );
           })}
-          {searchInput != "" && searchRes.map((card) => {
+          {searchInput !== "" && searchRes.map((card) => {
             return (
               <div
                 className={`${card.color} card custom-card`}
