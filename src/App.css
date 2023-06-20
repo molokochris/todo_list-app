@@ -131,6 +131,8 @@ footer {
 .search-bar input {
   border-radius: 30px;
   border: 1px solid gray;
+  padding: 2%;
+  font-size: medium;
 }
 .search-bar input::placeholder {
   text-align: center;
