@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Modal, Dropdown } from "react-bootstrap";
+import ModalTempate from "./ModalTempate";
 
 export default function Dashboard() {
   const [cards, updateCard] = useState([]);
@@ -23,7 +24,7 @@ export default function Dashboard() {
 
   const handleDelete = (e) => {
     const updatedCards = cards.filter((card) => card.id != e);
-    updateCard(updatedCards)
+    updateCard(updatedCards);
   };
 
   const handleTitleChange = (e) => {
@@ -36,10 +37,10 @@ export default function Dashboard() {
     updateInnerText(e.target.value);
   };
   const handleColorChange = (e) => {
-    updateCardColor(e)
+    updateCardColor(e);
   };
-  const [show, setShow] = useState(false);
 
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -47,13 +48,13 @@ export default function Dashboard() {
 
   const [searchInput, updateSearch] = useState("");
   const [searchRes, updateRes] = useState([]);
-  console.log(searchInput, searchRes, cards)
+  console.log(searchInput, searchRes, cards);
 
   const handleSearch = (e) => {
-    const searchVal = (e.target.value);
-    updateRes(cards.filter((card) => card.title.includes(searchVal)))
-    console.log(e.target.value)
-  }
+    const searchVal = e.target.value;
+    updateRes(cards.filter((card) => card.title.includes(searchVal)));
+    console.log(e.target.value);
+  };
 
   return (
     <div className="dashboard-container">
@@ -62,93 +63,101 @@ export default function Dashboard() {
       </div>
       <div className="list-container">
         <div className="list">
-          {searchInput === "" && cards.map((card) => {
-            return (
-              <div
-                className={`${card.color} card custom-card`}
-                style={{ width: "30%", height: "20%", margin: "1%" }}
-              >
-                <div className="delete-card" onClick={() => handleDelete(card.id)}>
-                  <img
-                    src="/delete-card.svg"
-                    style={{ width: "20px", height: "auto" }}
-                    alt=""
-                  />
+          {searchInput === "" &&
+            cards.map((card) => {
+              return (
+                <div
+                  className={`${card.color} card custom-card`}
+                  style={{ width: "30%", height: "20%", margin: "1%" }}
+                >
+                  <div
+                    className="delete-card"
+                    onClick={() => handleDelete(card.id)}
+                  >
+                    <img
+                      src="/delete-card.svg"
+                      style={{ width: "20px", height: "auto" }}
+                      alt=""
+                    />
+                  </div>
+                  <div className="card-body">
+                    <input
+                      className="card-title custom-title"
+                      type="text"
+                      placeholder={card.title}
+                      max-length="10"
+                      onChange={handleTitleChange}
+                      value={card.title}
+                    />
+                    <input
+                      className="card-subtitle mb-2 text-body-secondary custom-card-subtitle"
+                      type="text"
+                      placeholder={card.subtitle}
+                      onChange={handleSubChange}
+                      value={card.subtitle}
+                      max-length="10"
+                    />
+                    <input
+                      className="card-text custom-card-text"
+                      type="text"
+                      placeholder={card.p}
+                      onChange={handleTextChange}
+                      value={innerText}
+                    />
+                  </div>
                 </div>
-                <div className="card-body">
-                  <input
-                    className="card-title custom-title"
-                    type="text"
-                    placeholder={card.title}
-                    max-length="10"
-                    onChange={handleTitleChange}
-                    value={card.title}
-                  />
-                  <input
-                    className="card-subtitle mb-2 text-body-secondary custom-card-subtitle"
-                    type="text"
-                    placeholder={card.subtitle}
-                    onChange={handleSubChange}
-                    value={card.subtitle}
-                    max-length="10"
-                  />
-                  <input
-                    className="card-text custom-card-text"
-                    type="text"
-                    placeholder={card.p}
-                    onChange={handleTextChange}
-                    value={innerText}
-                  />
+              );
+            })}
+          {searchInput !== "" &&
+            searchRes.map((card) => {
+              return (
+                <div
+                  className={`${card.color} card custom-card`}
+                  style={{ width: "30%", height: "20%", margin: "1%" }}
+                >
+                  <div
+                    className="delete-card"
+                    onClick={() => handleDelete(card.id)}
+                  >
+                    <img
+                      src="/delete-card.svg"
+                      style={{ width: "20px", height: "auto" }}
+                      alt=""
+                    />
+                  </div>
+                  <div className="card-body">
+                    <input
+                      className="card-title custom-title"
+                      type="text"
+                      placeholder={card.title}
+                      max-length="10"
+                      onChange={handleTitleChange}
+                      value={card.title}
+                    />
+                    <input
+                      className="card-subtitle mb-2 text-body-secondary custom-card-subtitle"
+                      type="text"
+                      placeholder={card.subtitle}
+                      onChange={handleSubChange}
+                      value={card.subtitle}
+                      max-length="10"
+                    />
+                    <input
+                      className="card-text custom-card-text"
+                      type="text"
+                      placeholder={card.p}
+                      onChange={handleTextChange}
+                      value={innerText}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-          {searchInput !== "" && searchRes.map((card) => {
-            return (
-              <div
-                className={`${card.color} card custom-card`}
-                style={{ width: "30%", height: "20%", margin: "1%" }}
-              >
-                <div className="delete-card" onClick={() => handleDelete(card.id)}>
-                  <img
-                    src="/delete-card.svg"
-                    style={{ width: "20px", height: "auto" }}
-                    alt=""
-                  />
-                </div>
-                <div className="card-body">
-                  <input
-                    className="card-title custom-title"
-                    type="text"
-                    placeholder={card.title}
-                    max-length="10"
-                    onChange={handleTitleChange}
-                    value={card.title}
-                  />
-                  <input
-                    className="card-subtitle mb-2 text-body-secondary custom-card-subtitle"
-                    type="text"
-                    placeholder={card.subtitle}
-                    onChange={handleSubChange}
-                    value={card.subtitle}
-                    max-length="10"
-                  />
-                  <input
-                    className="card-text custom-card-text"
-                    type="text"
-                    placeholder={card.p}
-                    onChange={handleTextChange}
-                    value={innerText}
-                  />
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
         <div className="add" variant="primary" onClick={handleShow}>
           <span className="add-icon">+</span>
         </div>
-        <Modal
+        {/* <Modal
           show={show}
           onHide={handleClose}
           backdrop="static"
@@ -209,7 +218,21 @@ export default function Dashboard() {
               Add
             </Button>
           </Modal.Footer>
-        </Modal>
+        </Modal> */}
+
+        <ModalTempate
+          handleTitleChange={handleTitleChange}
+          title={title}
+          handleSubChange={handleSubChange}
+          subtitle={subtitle}
+          handleTextChange={handleTextChange}
+          innerText={innerText}
+          cardColor={cardColor}
+          handleColorChange={handleColorChange}
+          handleClick={handleClick}
+          show={show}
+          handleClose={handleClose}
+        />
       </div>
     </div>
   );

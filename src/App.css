@@ -57,6 +57,9 @@
   justify-content: center;
   align-items: center;
 }
+/* .custom-btn {
+  background-color: rgb(21,25,61);
+} */
 .errmsg {
   color: tomato;
 }

@@ -81,7 +81,7 @@ export default function Login() {
           />
         </div>
         <div className="mb-3 container">
-          <button type="submit" class="btn btn-dark">
+          <button type="submit" class="btn custom-btn btn-dark">
             login
           </button>
           <Link to="/" className="btn btn-danger">
