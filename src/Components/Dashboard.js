@@ -36,23 +36,74 @@ export default function Dashboard() {
     updateInnerText(e.target.value);
   };
   const handleColorChange = (e) => {
-    // updateCardColor(e.target.value);
     updateCardColor(e)
-    console.log(e)
   };
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  //Search Bar
+
+  const [searchInput, updateSearch] = useState("");
+  const [searchRes, updateRes] = useState([]);
+  console.log(searchInput, searchRes, cards)
+
+  const handleSearch = (e) => {
+    updateSearch(e.target.value);
+    updateRes(cards.filter((card) => card.title == searchInput))
+    console.log(e.target.value)
+  }
+
   return (
     <div className="dashboard-container">
       <div className="search-bar">
-        <input type="text" placeholder="search" />
+        <input type="text" placeholder="search" value={searchInput} onChange={handleSearch} />
       </div>
       <div className="list-container">
         <div className="list">
-          {cards.map((card) => {
+          {searchInput == "" && cards.map((card) => {
+            return (
+              <div
+                className={`${card.color} card custom-card`}
+                style={{ width: "30%", height: "20%", margin: "1%" }}
+              >
+                <div className="delete-card" onClick={() => handleDelete(card.id)}>
+                  <img
+                    src="/delete-card.svg"
+                    style={{ width: "20px", height: "auto" }}
+                    alt=""
+                  />
+                </div>
+                <div className="card-body">
+                  <input
+                    className="card-title custom-title"
+                    type="text"
+                    placeholder={card.title}
+                    max-length="10"
+                    onChange={handleTitleChange}
+                    value={card.title}
+                  />
+                  <input
+                    className="card-subtitle mb-2 text-body-secondary custom-card-subtitle"
+                    type="text"
+                    placeholder={card.subtitle}
+                    onChange={handleSubChange}
+                    value={card.subtitle}
+                    max-length="10"
+                  />
+                  <input
+                    className="card-text custom-card-text"
+                    type="text"
+                    placeholder={card.p}
+                    onChange={handleTextChange}
+                    value={innerText}
+                  />
+                </div>
+              </div>
+            );
+          })}
+          {searchInput != "" && searchRes.map((card) => {
             return (
               <div
                 className={`${card.color} card custom-card`}
