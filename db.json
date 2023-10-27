@@ -1,30 +1,4 @@
 {
-  "users": [
-    {
-      "username": "molokochris",
-      "email": "moloko.scrapmail@gmail.com",
-      "password": "123456789",
-      "id": "d69d5494-5bf8-45ca-af0f-2aa26ad7020c"
-    }
-  ],
-  "todos": [
-    {
-      "id": "56739aef-cbe6-40ac-a975-1842144f5c35",
-      "value": "blue",
-      "priority": "1",
-      "userId": "d69d5494-5bf8-45ca-af0f-2aa26ad7020c"
-    },
-    {
-      "id": "a37dac5d-e0a7-4680-a010-698c8c4676af",
-      "value": "yellow",
-      "priority": "2",
-      "userId": "d69d5494-5bf8-45ca-af0f-2aa26ad7020c"
-    },
-    {
-      "id": "a0d1fdd2-e3b0-4288-a252-5f8b81eda9b1",
-      "value": "green",
-      "priority": "3",
-      "userId": "d69d5494-5bf8-45ca-af0f-2aa26ad7020c"
-    }
-  ]
+  "users": [],
+  "todos": []
 }
