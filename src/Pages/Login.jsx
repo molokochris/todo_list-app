@@ -7,7 +7,6 @@ import { UserContext } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-
   const [loggedIn, setLoggedIn] = useContext(UserContext);
   const [user, setUser] = useState({
     email: "",
@@ -15,7 +14,6 @@ const Login = () => {
   });
   const navigate = useNavigate();
 
- 
   const [error, setError] = useState("");
 
   const handleUserInput = (event) => {
@@ -28,19 +26,19 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await loginUser(user.email, user.password);
-      if(!response) {
-        setError("Email and password do not match")
+      if (!response) {
+        setError("Email and password do not match");
         return;
       }
       setLoggedIn(response);
       navigate("/todo");
     } catch (error) {
-      setError("Encountered an error during login.")
+      setError("Encountered an error during login.");
     }
   };
 
   return (
-    <div className="w-screen h-screen bg-green-950 text-white flex flex-col justify-center items-center">
+    <div className="w-screen h-screen bg-[#111111] text-white flex flex-col justify-center items-center">
       <h2 className="text-4xl font-bold text-white">Login</h2>
       <p className="text-sm mb-3">Welcome back to MLab</p>
       <Form onSubmit={handleLogin}>
@@ -57,7 +55,7 @@ const Login = () => {
           setValue={handleUserInput}
         />
         <Button />
-        {error && <p className="text-red-600 text-xs">{ error } </p>}
+        {error && <p className="text-red-600 text-xs">{error} </p>}
       </Form>
       <Link className="block my-1 text-xs text-gray-200" to="/register">
         Don't have an account? Register

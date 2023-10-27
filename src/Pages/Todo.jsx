@@ -11,7 +11,7 @@ const Todo = () => {
   const [todos, setTodos] = useState([]);
 
   const [user, _] = useContext(UserContext);
-  const [temps, setTemps] = useState([])
+  const [temps, setTemps] = useState([]);
   const [todo, setTodo] = useState("");
   const [priority, setPriority] = useState("");
 
@@ -46,13 +46,13 @@ const Todo = () => {
   };
 
   const handlePriority = (event) => {
-    setPriority(event.target.value)
+    setPriority(event.target.value);
   };
 
   const handleAddTodo = async (e) => {
     e.preventDefault();
 
-    if(todo === "" || priority === "") return;
+    if (todo === "" || priority === "") return;
 
     const newId = uuidv4();
 
@@ -80,7 +80,7 @@ const Todo = () => {
   const handleEditTodo = async (todo, todoId) => {
     try {
       const response = await updateTodo(todo, todoId);
-      if(response) {
+      if (response) {
         setTodos((prevTodos) => {
           return prevTodos.map((td) => {
             if (td.id === todoId) {
@@ -94,9 +94,9 @@ const Todo = () => {
       }
       setTemps(todos);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -112,29 +112,26 @@ const Todo = () => {
     fetchTodos();
   }, []);
 
-
-  const handleSearch = event => {
-      
+  const handleSearch = (event) => {
     const value = event.target.value;
 
-    if(value === "") {
+    if (value === "") {
       setTodos(temps);
       return;
     }
 
-    const newTodos = temps.filter(todo => {
-      if(todo.value.toLowerCase().includes(value.toLowerCase())) {
-        return todo
+    const newTodos = temps.filter((todo) => {
+      if (todo.value.toLowerCase().includes(value.toLowerCase())) {
+        return todo;
       }
     });
 
-
-    setTodos(newTodos)
-  }
+    setTodos(newTodos);
+  };
 
   return (
     user && (
-      <div className="bg-green-950 text-white w-screen h-screen flex flex-col py-5 items-center">
+      <div className="bg-[#111111] text-white w-screen h-screen flex flex-col py-5 items-center">
         <div className="md:w-[700px] w-full">
           <h2 className="font-bold text-3xl px-3 my-3 w-full">
             Welcome, {user.username}
