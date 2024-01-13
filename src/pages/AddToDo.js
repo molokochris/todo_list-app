@@ -54,15 +54,16 @@ export default function AddToDo() {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        // justifyContent: "center",
+        // alignItems: "center",
         height: "100vh",
         width: "100vw",
         flexDirection: "column",
-        backgroundColor: "red",
+        backgroundColor: "black",
+        padding: "1%",
       }}
     >
-      <div>
+      {/* <div>
         AddToDo
         <div
           style={{
@@ -109,6 +110,134 @@ export default function AddToDo() {
             </div>
           );
         })}
+      </div> */}
+      <div style={{ display: "flex", flexDirection: "row", height: "100%" }}>
+        <div
+          style={{
+            width: "19%",
+            // height: "99%",
+            padding: "1%",
+          }}
+        >
+          <div
+            style={{
+              color: "whitesmoke",
+              fontWeight: "bolder",
+              fontFamily: "sans-serif",
+              fontSize: "24px",
+              borderRadius: "8px",
+              backgroundColor: "rgba(0,30,8,.8)",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "10px 20px",
+            }}
+          >
+            New +
+          </div>
+        </div>
+        <div
+          style={{
+            width: "79%",
+            // height: "99%",
+            backgroundColor: "#111111",
+            padding: "1%",
+            margin: "5% 0",
+            borderRadius: "18px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div
+            style={{
+              // width: "100%",
+              padding: "2% 4%",
+              backgroundColor: "#000000",
+              display: "flex",
+              borderRadius: "16px",
+              flexDirection: "row",
+              marginBottom: "10px",
+              color: "whitesmoke",
+              fontWeight: "bold",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ width: "90%" }}>
+              <span style={{}}>Note</span>
+            </div>
+            <span
+              style={{
+                backgroundColor: "navy",
+                borderRadius: "18px",
+                marginRight: "10px",
+                padding: "10px 20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Edit
+            </span>
+            <span
+              style={{
+                backgroundColor: "rgba(80,0,0,.8)",
+                borderRadius: "100px",
+                width: "20px",
+                height: "20px",
+                padding: "10px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              X
+            </span>
+          </div>
+          <div
+            style={{
+              // width: "100%",
+              padding: "2% 4%",
+              backgroundColor: "#000000",
+              display: "flex",
+              borderRadius: "16px",
+              flexDirection: "row",
+              marginBottom: "10px",
+              color: "whitesmoke",
+              fontWeight: "bold",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ width: "90%" }}>
+              <span style={{}}>Note</span>
+            </div>
+            <span
+              style={{
+                backgroundColor: "navy",
+                borderRadius: "18px",
+                marginRight: "10px",
+                padding: "10px 20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Edit
+            </span>
+            <span
+              style={{
+                backgroundColor: "rgba(80,0,0,.8)",
+                borderRadius: "100px",
+                width: "20px",
+                height: "20px",
+                padding: "10px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              X
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
