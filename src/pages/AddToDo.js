@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AddToDo() {
   const [priority, setPriority] = useState("normal");
@@ -32,7 +32,7 @@ export default function AddToDo() {
     setPriority(priority);
     setNote(note);
     setId(id);
-    handleSaveEdit(note, priority, id);
+    // handleSaveEdit();
     setEdit(true);
   };
   const handleSaveEdit = () => {
@@ -42,6 +42,8 @@ export default function AddToDo() {
     const newNote = { note, priority, id };
 
     setSavedNotes([...otherNotes, newNote]);
+    setNote("");
+    setPriority("normal");
     setEdit(false);
   };
   const handleNoteChange = (event) => {
@@ -121,18 +123,34 @@ export default function AddToDo() {
         >
           <div
             style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+              padding: "20px",
+              // width: "100px",
               color: "whitesmoke",
               fontWeight: "bolder",
               fontFamily: "sans-serif",
               fontSize: "24px",
               borderRadius: "8px",
               backgroundColor: "rgba(0,30,8,.8)",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "10px 20px",
             }}
           >
-            New +
+            <input
+              placeholder="note"
+              value={note}
+              onChange={handleNoteChange}
+            />
+            <select value={priority} onChange={handlePriorityChange}>
+              <option value="normal">Normal</option>
+              <option value="important">Important</option>
+            </select>
+            {edit ? (
+              <button onClick={handleSaveEdit}>save edit</button>
+            ) : (
+              <button onClick={handleSave}>save</button>
+            )}
           </div>
         </div>
         <div
@@ -147,7 +165,60 @@ export default function AddToDo() {
             flexDirection: "column",
           }}
         >
-          <div
+          {savedNotes.map(({ note, priority, id }) => {
+            return (
+              <div
+                style={{
+                  // width: "100%",
+                  padding: "2% 4%",
+                  backgroundColor:
+                    priority == "important" ? "tomato" : "#000000",
+                  display: "flex",
+                  borderRadius: "16px",
+                  flexDirection: "row",
+                  marginBottom: "10px",
+                  color: "whitesmoke",
+                  fontWeight: "bold",
+                  alignItems: "center",
+                }}
+                key={id}
+              >
+                <div style={{ width: "90%" }}>
+                  <span style={{}}>{note}</span>
+                </div>
+                <span
+                  style={{
+                    backgroundColor: "navy",
+                    borderRadius: "18px",
+                    marginRight: "10px",
+                    padding: "10px 20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  onClick={() => handleEdit(note, priority, id)}
+                >
+                  Edit
+                </span>
+                <span
+                  style={{
+                    backgroundColor: "rgba(80,0,0,.8)",
+                    borderRadius: "100px",
+                    width: "20px",
+                    height: "20px",
+                    padding: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  onClick={() => handleDelete(id)}
+                >
+                  X
+                </span>
+              </div>
+            );
+          })}
+          {/* <div
             style={{
               // width: "100%",
               padding: "2% 4%",
@@ -191,52 +262,7 @@ export default function AddToDo() {
             >
               X
             </span>
-          </div>
-          <div
-            style={{
-              // width: "100%",
-              padding: "2% 4%",
-              backgroundColor: "#000000",
-              display: "flex",
-              borderRadius: "16px",
-              flexDirection: "row",
-              marginBottom: "10px",
-              color: "whitesmoke",
-              fontWeight: "bold",
-              alignItems: "center",
-            }}
-          >
-            <div style={{ width: "90%" }}>
-              <span style={{}}>Note</span>
-            </div>
-            <span
-              style={{
-                backgroundColor: "navy",
-                borderRadius: "18px",
-                marginRight: "10px",
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              Edit
-            </span>
-            <span
-              style={{
-                backgroundColor: "rgba(80,0,0,.8)",
-                borderRadius: "100px",
-                width: "20px",
-                height: "20px",
-                padding: "10px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              X
-            </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

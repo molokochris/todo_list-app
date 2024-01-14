@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { Login, Register } from "./Auth";
 
 export default function Root() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <div
       style={{
@@ -12,37 +13,8 @@ export default function Root() {
         height: "100vh",
       }}
     >
-      <div
-        style={{
-          padding: "10px 20px",
-          marginBottom: "10px",
-          width: "80px",
-          backgroundColor: "tomato",
-          color: "whitesmoke",
-          borderRadius: "8px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        onClick={() => navigate("/add")}
-      >
-        Add
-      </div>
-      <div
-        style={{
-          padding: "10px 20px",
-          marginBottom: "10px",
-          width: "80px",
-          backgroundColor: "tomato",
-          color: "whitesmoke",
-          borderRadius: "8px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        View
-      </div>
+      <Login />
+      <Register />
     </div>
   );
 }
