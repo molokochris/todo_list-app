@@ -1,17 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
-import Root from "./pages/root";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Contacts from "./pages/AddToDo";
 import ErrorPage from "./pages/error-page";
 
 const App = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/Register",
+    element: <Register />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/add",
     element: <Contacts />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
